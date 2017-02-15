@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="lives" sid="246975814239479" static="0" type="number">5</variable>
+        <comment>Use the down arrow to allow the player to deliberately drop down through a jump-thru platform.</comment>
+        <event-block sid="524953377527685">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="691722752417416" type="Keyboard">
+                    <param id="0" name="Key">40 (Down arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="12" name="Fall through" sid="603800578972443" type="Player" />
+            </actions>
+        </event-block>
+        <comment>Allow WASD as alternate controls to arrow keys.</comment>
+        <event-block sid="357280715583816">
+            <conditions>
+                <condition id="2" name="Key is down" sid="782572620746460" type="Keyboard">
+                    <param id="0" name="Key">87 (W)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="364139232845494" type="Player">
+                    <param id="0" name="Control">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="421457887843238">
+            <conditions>
+                <condition id="2" name="Key is down" sid="912394634319799" type="Keyboard">
+                    <param id="0" name="Key">65 (A)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="780569032953433" type="Player">
+                    <param id="0" name="Control">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="416382118693089">
+            <conditions>
+                <condition id="2" name="Key is down" sid="516653546414854" type="Keyboard">
+                    <param id="0" name="Key">83 (S)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="12" name="Fall through" sid="252976095862348" type="Player" />
+            </actions>
+        </event-block>
+        <event-block sid="344602422513319">
+            <conditions>
+                <condition id="2" name="Key is down" sid="662831141726641" type="Keyboard">
+                    <param id="0" name="Key">68 (D)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="786968385991954" type="Player">
+                    <param id="0" name="Control">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Mirror the player&apos;s image so they appear facing the right way when moving left or right.</comment>
+        <event-block any="1" sid="499890567693785">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="861215867693330" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+                <condition id="0" name="On key pressed" sid="294137188929294" type="Keyboard">
+                    <param id="0" name="Key">65 (A)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="928007636465997" type="Player">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="325284947105604">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="233352038684978" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+                <condition id="0" name="On key pressed" sid="254466235750641" type="Keyboard">
+                    <param id="0" name="Key">68 (D)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="572744396515677" type="Player">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>If the player falls off the bottom of the layout, restart the level.</comment>
+        <event-block sid="611724488833794">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="307745900464829" type="Player">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">LayoutHeight</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="980889231287076" type="System" />
+            </actions>
+        </event-block>
+        <event-group description="" sid="479553138115219" title="Platform">
+            <sub-events>
+                <event-block sid="622452432388015">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="762620478022824" type="Player">
+                            <param id="0" name="Object">MovingSolidTile2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="181864533462107" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="999506669788600" type="MovingSolidTile2" />
+                    </actions>
+                </event-block>
+                <event-block sid="656279090092313">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="831893318673747" type="Player">
+                            <param id="0" name="Object">Door</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-26" name="Restart layout" sid="612084817793425" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="560237935404613" title="Health">
+            <sub-events>
+                <event-block sid="558873085349471">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="417090619432689" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="786050300568406" type="HealthBar">
+                            <param id="0" name="Frame number">lives</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="133477782748038">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="514718415946314" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-26" name="Restart layout" sid="429976053682347" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="953941104459385" title="Enemy">
+            <sub-events>
+                <event-block sid="489120780820699">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="370259196052708" type="Sprite">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">Desination.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="380591025241348" type="Sprite">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="286266077937971">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="697634929477041" type="Sprite">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">Origin.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="602143834068169" type="Sprite">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="927777263471351">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="570982491442543" type="Sprite2">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">Desination2.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="375089630035799" type="Sprite2">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="618155312209038">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="472490512928952" type="Sprite2">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">Origin2.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="925787135205262" type="Sprite2">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="856516689981297">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="304996587150012" type="Sprite3">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">Desination3.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="286885569610056" type="Sprite3">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="248261301723284">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="327688198970717" type="Sprite3">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">Origin3.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="959282560672120" type="Sprite3">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
