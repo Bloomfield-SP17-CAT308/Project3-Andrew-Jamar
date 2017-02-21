@@ -115,9 +115,23 @@
                     </conditions>
                     <actions>
                         <action id="-16" name="Wait" sid="181864533462107" type="System">
-                            <param id="0" name="Seconds">1</param>
+                            <param id="0" name="Seconds">1.5</param>
                         </action>
-                        <action id="-9" name="Destroy" sid="999506669788600" type="MovingSolidTile2" />
+                        <action id="-26" name="Move to layer" sid="172024846663608" type="MovingSolidTile2">
+                            <param id="0" name="Layer">&quot;Background&quot;</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="997270875717040" type="MovingSolidTile2">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="853789908782015" type="System">
+                            <param id="0" name="Seconds">1.5</param>
+                        </action>
+                        <action id="-26" name="Move to layer" sid="850516993527586" type="MovingSolidTile2">
+                            <param id="0" name="Layer">&quot;Game&quot;</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="442456566910281" type="MovingSolidTile2">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="656279090092313">
@@ -154,6 +168,20 @@
                     </conditions>
                     <actions>
                         <action id="-26" name="Restart layout" sid="429976053682347" type="System" />
+                    </actions>
+                </event-block>
+                <event-block sid="766290513432670">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="792107320673297" type="Food">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="277399212007021" type="Food" />
+                        <action id="-10" name="Add to" sid="602723266372622" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
