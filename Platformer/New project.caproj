@@ -219,10 +219,63 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Text2" sid="614958431486811">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Text3" sid="490103708147068">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Text4" sid="924026630563714">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Text5" sid="121039386280861">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Sprite4" sid="640943718577315">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="339532467831376" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text6" sid="733038029547152">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="MovingSolidTile3" sid="476742592477011">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Sine" sid="779441338770986">
+                    <behavior id="Sin" />
+                </behavior-type>
+                <behavior-type name="Solid" sid="287824697270671">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Sprite5" sid="869717106578699">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="333268126495394">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="917419068597499" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
         <layout>Layout 1.xml</layout>
+        <layout>Title.xml</layout>
+        <layout>GameOver.xml</layout>
+        <layout>Victory.xml</layout>
+        <layout>Layout 2.xml</layout>
+        <layout>Layout 3.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>Event sheet 1.xml</event-sheet>

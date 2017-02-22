@@ -184,6 +184,25 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block any="1" sid="245301137079468">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="875506913308142" type="Player">
+                            <param id="0" name="Object">Sprite</param>
+                        </condition>
+                        <condition id="0" name="On collision with another object" sid="249316337733024" type="Player">
+                            <param id="0" name="Object">Sprite2</param>
+                        </condition>
+                        <condition id="0" name="On collision with another object" sid="380784894430149" type="Player">
+                            <param id="0" name="Object">Sprite3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="803468154019636" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="953941104459385" title="Enemy">
@@ -268,5 +287,153 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" sid="573890696945564" title="Levels">
+            <sub-events>
+                <event-block sid="189217086918111">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="220782109947709" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="301462340829605">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="937712924571189" type="System">
+                                    <param id="0" name="First value">LayoutName</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">&quot;Title&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Go to layout" sid="126085700227930" type="System">
+                                    <param id="0" name="Layout">Layout 1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="500490835028579">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="351226282802898" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="319161057201948">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="860118624949202" type="System">
+                                    <param id="0" name="First value">LayoutName</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">&quot;Victory&quot;</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="570668702955213" type="System">
+                                    <param id="0" name="First value">LayoutName</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">&quot;GameOver&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Wait" sid="100254811451399" type="System">
+                                    <param id="0" name="Seconds">3</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="914854326385840" type="System">
+                                    <param id="0" name="Layout">Title</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="622481092032299">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="765562982880505" type="Door">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-43" name="Go to next/previous layout" sid="783044333634211" type="System">
+                            <param id="0" name="Which">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="904509042599113">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="919786790266463" type="System">
+                            <param id="0" name="First value">LayoutName</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">&quot;Layout 2&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="925151342923744" type="System">
+                            <param id="0" name="Layout">Victory</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="614545948108584">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="843132759856099" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-21" name="Reset global variables" sid="311566466172363" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="115034885683985">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="892406063402135" type="Keyboard">
+                    <param id="0" name="Key">70 (F)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="331210474856601" type="Sprite5">
+                    <param id="0" name="Object">Player</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+                <action behavior="Bullet" id="1" name="Set acceleration" sid="943313157850362" type="Sprite5">
+                    <param id="0" name="Acceleration">100</param>
+                </action>
+                <action id="-16" name="Wait" sid="838394500234270" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="937553744775784" type="Sprite5">
+                    <param id="0" name="X">384</param>
+                    <param id="1" name="Y">224</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="538604756175085" type="Sprite5">
+                    <param id="0" name="Speed">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="548384545709291">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="216823349338958" type="Sprite5">
+                    <param id="0" name="Object">Sprite</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="265179723525475" type="Sprite" />
+            </actions>
+        </event-block>
+        <event-block any="1" sid="551212999330799">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="848784631194322" type="Sprite5">
+                    <param id="0" name="Object">Sprite3</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="266105476016902" type="Sprite2" />
+            </actions>
+        </event-block>
+        <event-block sid="473810700715395">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="321530015775782" type="Sprite5">
+                    <param id="0" name="Object">Sprite2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="528853760682924" type="Sprite3" />
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>
